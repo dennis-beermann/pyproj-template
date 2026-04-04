@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: uv sync --frozen
       - name: Run ruff
-        run: ruff format
+        run: uv run ruff format .
       - name: Run Pyright
-        run: pyright
+        run: uv run pyright .
 
