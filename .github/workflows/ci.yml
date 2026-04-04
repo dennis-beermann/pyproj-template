@@ -1,6 +1,6 @@
 name: CI
 
-on: 
+on:
   push:
     branches: [ '**' ]
 
@@ -13,7 +13,7 @@ permissions:
 # In the GitHub CI pipeline, all jobs are run for each Python version located in
 # the repo variable named CI_PYTHON_VERSIONS. Edit this in GitHub under
 # Settings -> Secrets and Variables -> Variables (Tab) -> Repository variables
-#   CI_PYTHON_VERSIONS = ["3.12", "3.13"]  
+#   CI_PYTHON_VERSIONS = ["3.12", "3.13"]
 
 jobs:
   typecheck:
@@ -39,4 +39,3 @@ jobs:
         run: uv run ruff check .
       - name: Ruff format check
         run: uv run ruff format --check .
-      

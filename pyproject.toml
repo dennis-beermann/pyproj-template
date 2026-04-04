@@ -19,6 +19,7 @@ dependencies = [
 dev = [
   "ruff",
   "pyright",
+  "pre-commit>=4.5.1",
 ]
 
 [project.urls]

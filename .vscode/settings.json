@@ -2,7 +2,7 @@
   "python.analysis.diagnosticsSource": "Pyright",
   "python.analysis.typeCheckingMode": "standard",
   "python.analysis.diagnosticMode": "openFilesOnly",
-  
+
   "[python]": {
     "editor.wordWrap": "off",
     "editor.tabSize": 4,
@@ -11,9 +11,9 @@
 
   "[yaml]": {
     "editor.wordWrap": "off",
-    "editor.tabSize": 2,
+    "editor.tabSize": 2
   },
-  
+
   "[json]": {
     "editor.wordWrap": "off",
     "editor.tabSize": 2
@@ -22,5 +22,5 @@
   "[toml]": {
     "editor.wordWrap": "off",
     "editor.tabSize": 2
-  },
+  }
 }
