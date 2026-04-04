@@ -27,3 +27,7 @@ A starter template for Python projects with a clean structure and common develop
     - pyproject.toml -> [tool.ruff] -> line-length
 - License
     - pyproject.toml -> [project] -> license
+- Pyright
+    - Installed with "pip install -e ".[dev]". Alternatively install yourself to use from command line
+    - Have pylance extension for VSCode installed, set it to use pyright
+- 
