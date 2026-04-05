@@ -47,35 +47,10 @@ jobs:
         python-version: ${{ fromJSON(vars.CI_PYTHON_VERSIONS) }}
     steps:
       - uses: actions/checkout@v5
-
       - uses: astral-sh/setup-uv@v7
         with:
           python-version: ${{ matrix.python-version }}
-          enable-cache: true
-
-      - name: Install dependencies
+      - name: Install
         run: uv sync --frozen
-
-      - name: Run Pytest
-        # We manually override the output directory here to be 100% sure
-        run: |
-          mkdir -p ${{ github.workspace }}/.artifacts
-          uv run pytest --html=${{ github.workspace }}/.artifacts/report.html --self-contained-html
-
-      - name: Debug - List Files
-        if: always()
-        run: |
-          echo "Checking workspace root:"
-          ls -R ${{ github.workspace }}/.artifacts || echo "Directory .artifacts not found!"
-
-      - name: Upload Test Artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-results-python-${{ matrix.python-version }}
-          # Using the wildcard /** ensures it recursively finds all the files
-          # we saw in your debug log (junit, coverage, report.html)
-          path: .artifacts/**
-          # Optional: ensures the action fails the build if it can't find the files
-          if-no-files-found: error
-          retention-days: 7
+      - name: Pytest
+        run: uv run pytest
