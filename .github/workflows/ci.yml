@@ -16,28 +16,39 @@ permissions:
 #   CI_PYTHON_VERSIONS = ["3.12", "3.13"]
 
 jobs:
+  lint:
+    name: Lint & Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v7
+      - name: Ruff
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+
   typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v7
+      - name: Pyright
+        run: uv run pyright .
+
+  test:
+    name: Test (Python ${{ matrix.python-version }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         python-version: ${{ fromJSON(vars.CI_PYTHON_VERSIONS) }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-      - name: Setup Python
-        uses: actions/setup-python@v6
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v7
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Setup uv
-        uses: astral-sh/setup-uv@v7
-      - name: Install dependencies
+      - name: Install
         run: uv sync --frozen
-      - name: Pyright typecheck
-        run: uv run pyright .
-      - name: Ruff check
-        run: uv run ruff check .
-      - name: Ruff format check
-        run: uv run ruff format --check .
       - name: Pytest
         run: uv run pytest

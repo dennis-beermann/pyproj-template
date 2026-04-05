@@ -34,3 +34,4 @@ A starter template for Python projects with a clean structure and common develop
 - Install pre-commit via "uv run pre-commit install"
 - Rune examples either via console, with task, or with debug launch configuration
 - Tests setup to produce artifacts in .artifacts/pytest and .artifacts/pytest-cov. Mention junit.xml and human-readable .html sites. Also integrated into CI pipeline.
+- Set Python interpreter
