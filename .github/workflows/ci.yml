@@ -73,6 +73,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-results-python-${{ matrix.python-version }}
-          # Use the absolute path to the workspace
-          path: ${{ github.workspace }}/.artifacts/
+          # Using the wildcard /** ensures it recursively finds all the files
+          # we saw in your debug log (junit, coverage, report.html)
+          path: .artifacts/**
+          # Optional: ensures the action fails the build if it can't find the files
+          if-no-files-found: error
           retention-days: 7
