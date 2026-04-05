@@ -53,4 +53,13 @@ jobs:
       - name: Install
         run: uv sync --frozen
       - name: Pytest
-        run: uv run pytest
+        run: |
+          mkdir -p test-reports
+          uv run pytest --html=test-reports/report.html --self-contained-html --junitxml=test-reports/junit.xml
+      - name: Upload Test Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-python-${{ matrix.python-version }}
+          path: test-reports/
+          if-no-files-found: error
