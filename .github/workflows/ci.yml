@@ -73,3 +73,9 @@ jobs:
         run: uv sync --frozen
       - name: Sphinx build
         run: uv run sphinx-build -b html -W --keep-going docs/source docs/build/html
+      - name: Upload docs artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: docs-html
+          path: docs/build/html
+          if-no-files-found: error
