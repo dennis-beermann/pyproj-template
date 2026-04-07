@@ -1,18 +1,8 @@
 # Python Project Template
 
-A starter template for Python projects with a clean structure and common development tooling preconfigured. This includes
+A starter template for Python projects with a clean structure and common development tooling preconfigured.
 
-- Packaging (`pyproject.toml`)
-- Dependency management
-- Linting and formatting (`ruff`, `black`)
-- Type checking (`mypy`)
-- Testing (`pytest`, coverage)
-- Pre-commit hooks
-- CI workflow (GitHub Actions)
-- Documentation scaffold
-- Example `.env` and settings pattern
-
-## TODO List (mention in this README)
+## TODO: mention in this README
 
 - Python versions
     - in CI: see ci.yml
@@ -35,3 +25,5 @@ A starter template for Python projects with a clean structure and common develop
 - Rune examples either via console, with task, or with debug launch configuration
 - Tests setup to produce artifacts in .artifacts/pytest and .artifacts/pytest-cov. Mention junit.xml and human-readable .html sites. Also integrated into CI pipeline.
 - Set Python interpreter
+- Copyright in docs/conf.py -> LICENSE
+- Docs generated to docs/build/html by both CI and VSCode task. Later integration into readthedocs can be configured to perform automatically.

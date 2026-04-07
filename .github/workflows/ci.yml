@@ -63,3 +63,13 @@ jobs:
           name: test-results-python-${{ matrix.python-version }}
           path: test-reports/
           if-no-files-found: error
+
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v7
+      - name: Install
+        run: uv sync --frozen
+      - name: Sphinx build
+        run: uv run sphinx-build -b html -W --keep-going docs/source docs/build/html

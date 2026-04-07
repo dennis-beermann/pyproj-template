@@ -34,6 +34,14 @@
         },
 
         {
+            "label": "docs",
+            "type": "shell",
+            "command": "uv",
+            "args": ["run", "sphinx-build", "-b", "html", "docs/source", "docs/build/html"],
+            "group": { "kind": "build" }
+        },
+
+        {
             "label": "Run example",
             "type": "shell",
             "command": "uv",
